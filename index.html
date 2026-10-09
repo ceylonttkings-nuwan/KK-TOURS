@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK Tours | Premier Sri Lanka Private Tours & Travel Experiences</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Plus Jakarta Sans & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP & ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            emerald: '#047857',
+                            emeraldDark: '#064e3b',
+                            emeraldLight: '#10b981',
+                            gold: '#d97706',
+                            goldLight: '#f59e0b',
+                            sand: '#fef3c7',
+                            dark: '#0f172a',
+                            lightBg: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass-header {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15,23,42,0.4) 0%, rgba(15,23,42,0.85) 100%);
+        }
+
+        /* Hide scrollbars for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-lightBg text-slate-800 font-sans antialiased selection:bg-brand-emerald selection:text-white overflow-x-hidden">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-emeraldDark text-emerald-100 text-xs md:text-sm py-2 px-4 text-center flex justify-between items-center max-w-full">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-brand-goldLight"></i> +94 75 077 5745</span>
+                <span class="hidden sm:flex items-center gap-1.5"><i class="fa-solid fa-envelope text-brand-goldLight"></i> info@kktourslanka.com</span>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="bg-emerald-800/80 px-2 py-0.5 rounded text-xs font-semibold text-brand-goldLight"><i class="fa-solid fa-star"></i> 4.9/5 Rating (350+ Guests)</span>
+                <a href="https://wa.me/94750775745" target="_blank" class="hover:text-brand-goldLight transition-colors flex items-center gap-1 font-semibold">
+                    <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i> <span class="hidden md:inline">Instant WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-header border-b border-slate-800/50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 lg:px-8 py-3.5 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-emerald to-brand-gold flex items-center justify-center text-white font-black text-xl shadow-lg shadow-emerald-900/30 group-hover:scale-105 transition-transform">
+                    KK
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold text-white tracking-tight flex items-center gap-1">
+                        KK TOURS <span class="text-brand-goldLight text-xs tracking-widest px-1.5 py-0.5 bg-amber-500/10 rounded border border-amber-500/20">SRI LANKA</span>
+                    </span>
+                    <p class="text-[10px] text-slate-300 tracking-wider uppercase font-medium">Explore Paradise With Locals</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-200">
+                <a href="#tours" class="hover:text-brand-goldLight transition-colors">Tour Packages</a>
+                <a href="#destinations" class="hover:text-brand-goldLight transition-colors">Destinations</a>
+                <a href="#planner" class="hover:text-brand-goldLight transition-colors flex items-center gap-1">
+                    Custom Planner <span class="text-[10px] bg-brand-gold text-slate-900 px-1.5 py-0.2 font-bold rounded-full">Popular</span>
+                </a>
+                <a href="#why-us" class="hover:text-brand-goldLight transition-colors">Why KK Tours</a>
+                <a href="#reviews" class="hover:text-brand-goldLight transition-colors">Reviews</a>
+                <a href="#faq" class="hover:text-brand-goldLight transition-colors">Travel Info</a>
+            </nav>
+
+            <!-- Header Buttons -->
+            <div class="hidden lg:flex items-center space-x-3">
+                <button onclick="openBookingModal('General Inquiry')" class="bg-gradient-to-r from-brand-emerald to-emerald-600 hover:from-emerald-600 hover:to-brand-emerald text-white px-5 py-2.5 rounded-xl font-semibold text-sm shadow-md shadow-emerald-900/40 hover:shadow-lg hover:shadow-emerald-600/30 transition-all hover:-translate-y-0.5">
+                    Plan My Trip <i class="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-white text-2xl focus:outline-none p-1" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-6 space-y-4">
+            <a href="#tours" class="block text-slate-200 font-medium py-2 border-b border-slate-800 hover:text-brand-goldLight">Tour Packages (6-14 Days)</a>
+            <a href="#destinations" class="block text-slate-200 font-medium py-2 border-b border-slate-800 hover:text-brand-goldLight">Sri Lanka Destinations</a>
+            <a href="#planner" class="block text-slate-200 font-medium py-2 border-b border-slate-800 hover:text-brand-goldLight">Custom Tour Planner</a>
+            <a href="#why-us" class="block text-slate-200 font-medium py-2 border-b border-slate-800 hover:text-brand-goldLight">Why Choose KK Tours</a>
+            <a href="#reviews" class="block text-slate-200 font-medium py-2 border-b border-slate-800 hover:text-brand-goldLight">Guest Reviews</a>
+            <a href="#faq" class="block text-slate-200 font-medium py-2 hover:text-brand-goldLight">FAQ & Travel Tips</a>
+            <div class="pt-2">
+                <button onclick="openBookingModal('Mobile Menu')" class="w-full bg-brand-gold text-slate-950 font-bold py-3 rounded-xl shadow-lg">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Book Your Tour Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-slate-950">
+        <!-- Background Image Slideshow container -->
+        <div class="absolute inset-0 z-0">
+            <img id="heroBg" src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80" alt="Sigiriya Fortress Sri Lanka" class="w-full h-full object-cover object-center transition-all duration-1000 scale-105">
+            <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10 py-20 text-center text-white">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-semibold mb-6 shadow-xl backdrop-blur-md">
+                <i class="fa-solid fa-compass text-brand-gold text-sm animate-spin" style="animation-duration: 10s;"></i>
+                <span>Official Private Tour Specialist Sri Lanka</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-serif tracking-tight leading-tight max-w-5xl mx-auto mb-6">
+                Discover The Wonder Of <br class="hidden sm:inline">
+                <span class="gradient-text">Sri Lanka</span> With KK Tours
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto mb-10 font-normal leading-relaxed">
+                Seamless 6, 9, 12, and 14-day private island itineraries tailored just for you. Dedicated luxury A/C vehicle, expert local driver-guide, handpicked hotels & unforgettable memories.
+            </p>
+
+            <!-- Call to Actions -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+                <a href="#tours" class="w-full sm:w-auto bg-brand-gold hover:bg-amber-500 text-slate-950 px-8 py-4 rounded-xl font-bold text-base shadow-xl shadow-amber-500/20 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-map-location-dot"></i> Explore Tour Packages
+                </a>
+                <a href="#planner" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 px-8 py-4 rounded-xl font-semibold text-base backdrop-blur-md hover:scale-105 transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-sliders text-brand-gold"></i> Customize Your Trip
+                </a>
+            </div>
+
+            <!-- Key Highlights Pill Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto text-left">
+                <div class="glass-card p-3.5 rounded-2xl border border-white/10 bg-slate-900/60 flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg font-bold shrink-0">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium">Transport</p>
+                        <p class="text-sm font-bold text-white">Luxury A/C Vehicles</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-3.5 rounded-2xl border border-white/10 bg-slate-900/60 flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg font-bold shrink-0">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium">Guides</p>
+                        <p class="text-sm font-bold text-white">English Native Guide</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-3.5 rounded-2xl border border-white/10 bg-slate-900/60 flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-lg font-bold shrink-0">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium">Stay</p>
+                        <p class="text-sm font-bold text-white">Boutique & Luxury</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-3.5 rounded-2xl border border-white/10 bg-slate-900/60 flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-lg font-bold shrink-0">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium">Support</p>
+                        <p class="text-sm font-bold text-white">24/7 Island Assistance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Packages Section (6, 9, 12, 14 Days) -->
+    <section id="tours" class="py-20 bg-slate-100 relative">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-emerald font-bold tracking-widest text-xs uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
+                    Curated Island Journeys
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold font-serif text-slate-900 mt-3 mb-4">
+                    Our Popular Tour Packages
+                </h2>
+                <p class="text-slate-600 text-base md:text-lg">
+                    Designed specifically for incoming tourists to experience the absolute best of Sri Lanka—from ancient fortresses to wildlife safaris and pristine tea trails.
+                </p>
+
+                <!-- Tour Duration Selector Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8 bg-white p-2 rounded-2xl shadow-md border border-slate-200 max-w-2xl mx-auto">
+                    <button onclick="switchTourTab(6)" id="tab-btn-6" class="tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all bg-brand-emerald text-white shadow">
+                        6 Days Highlights
+                    </button>
+                    <button onclick="switchTourTab(9)" id="tab-btn-9" class="tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-brand-emerald hover:bg-slate-50">
+                        9 Days Explorer
+                    </button>
+                    <button onclick="switchTourTab(12)" id="tab-btn-12" class="tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-brand-emerald hover:bg-slate-50">
+                        12 Days Grand Island
+                    </button>
+                    <button onclick="switchTourTab(14)" id="tab-btn-14" class="tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-brand-emerald hover:bg-slate-50">
+                        14 Days Ultimate Paradise
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tour Cards Grid Container -->
+            <div id="tourCardsContainer" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Content loaded via JS for active tab -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Tour Planner & Price Calculator -->
+    <section id="planner" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Glowing Circles -->
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-emerald/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Intro Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-amber-400 font-bold tracking-widest text-xs uppercase bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/20">
+                        Tailor-Made Travel
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold font-serif leading-tight">
+                        Create Your Own <br>
+                        <span class="gradient-text">Sri Lanka Itinerary</span>
+                    </h2>
+                    <p class="text-slate-300 text-base leading-relaxed">
+                        Want a flexible plan? Choose your travel duration, group size, and preferred hotel style. Get an instant transparent price estimate and directly request your personalized quote via WhatsApp or email.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-200 font-medium text-sm">Free Itinerary Customization & Route Optimization</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-200 font-medium text-sm">Dedicated Chauffeur Guide (English, German, French speaking)</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-slate-200 font-medium text-sm">Airport Pickup & Dropoff Included</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Calculator Form Card -->
+                <div class="lg:col-span-7 bg-slate-800/90 border border-slate-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
+                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-brand-gold"></i> Instant Tour Cost Estimator
+                    </h3>
+
+                    <form id="tourPlannerForm" onsubmit="handlePlannerSubmit(event)" class="space-y-6">
+                        <!-- Step 1: Duration -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">1. Tour Duration (Days)</label>
+                            <div class="grid grid-cols-4 gap-2.5">
+                                <button type="button" onclick="setPlannerDays(6)" id="p-day-6" class="planner-day-btn p-3 rounded-xl border border-slate-600 bg-slate-700/50 text-white font-bold text-sm text-center hover:border-brand-emerald">
+                                    6 Days
+                                </button>
+                                <button type="button" onclick="setPlannerDays(9)" id="p-day-9" class="planner-day-btn p-3 rounded-xl border border-brand-emerald bg-brand-emerald text-white font-bold text-sm text-center shadow-lg">
+                                    9 Days
+                                </button>
+                                <button type="button" onclick="setPlannerDays(12)" id="p-day-12" class="planner-day-btn p-3 rounded-xl border border-slate-600 bg-slate-700/50 text-white font-bold text-sm text-center hover:border-brand-emerald">
+                                    12 Days
+                                </button>
+                                <button type="button" onclick="setPlannerDays(14)" id="p-day-14" class="planner-day-btn p-3 rounded-xl border border-slate-600 bg-slate-700/50 text-white font-bold text-sm text-center hover:border-brand-emerald">
+                                    14 Days
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Group Size & Hotel Class -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">2. Travelers</label>
+                                <select id="plannerTravelers" onchange="calculateTourEstimate()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-emerald font-medium text-sm">
+                                    <option value="1">Solo Traveler (1 Person)</option>
+                                    <option value="2" selected>Couple / 2 Persons</option>
+                                    <option value="4">Small Group (3 - 4 Persons)</option>
+                                    <option value="8">Family / Large Group (5+ Persons)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">3. Accommodation Style</label>
+                                <select id="plannerHotel" onchange="calculateTourEstimate()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-emerald font-medium text-sm">
+                                    <option value="driver_only">Transport & Driver-Guide Only (No Hotel)</option>
+                                    <option value="3_star">3-Star Boutique & Eco Lodges</option>
+                                    <option value="4_star" selected>4-Star Deluxe Hotels & Resorts</option>
+                                    <option value="5_star">5-Star Luxury Villas & Resorts</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Preferred Attractions -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">4. Core Interests (Select All That Apply)</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" checked value="Wildlife Safari" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Wildlife & Safari</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" checked value="Ancient Heritage" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Sigiriya & Heritage</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" checked value="Scenic Ella Train" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Scenic Ella Train</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" checked value="Southern Beaches" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Beaches & Whales</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" value="Tea Country Hike" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Tea Plantation Trek</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60 cursor-pointer text-xs">
+                                    <input type="checkbox" value="Ayurveda Spa" class="planner-interest rounded text-brand-emerald focus:ring-0">
+                                    <span>Ayurveda & Wellness</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Calculation Result Box -->
+                        <div class="bg-gradient-to-r from-emerald-950 to-slate-900 p-4 rounded-2xl border border-emerald-500/30 flex flex-wrap items-center justify-between gap-4">
+                            <div>
+                                <span class="text-xs text-slate-400 font-medium block">Estimated Price Range (Per Person)</span>
+                                <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-serif" id="plannerPriceDisplay">
+                                    $480 - $620 USD
+                                </div>
+                                <span class="text-[10px] text-slate-400">*Includes AC vehicle, driver-guide, fuel, toll charges & breakfast.</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button type="button" onclick="sendWhatsAppPlanner()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold px-4 py-3 rounded-xl text-xs sm:text-sm flex items-center gap-1.5 shadow-lg transition-all">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Send via WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destination Showcase Section -->
+    <section id="destinations" class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-emerald font-bold tracking-widest text-xs uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
+                        Top Attractions Covered
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold font-serif text-slate-900 mt-3">
+                        Iconic Sri Lanka Destinations
+                    </h2>
+                </div>
+                <p class="text-slate-600 max-w-md mt-3 md:mt-0 text-sm">
+                    We cover all major highlight spots across the island during your 6, 9, 12, or 14 days private tour with seamless door-to-door transportation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Destination Card 1 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80" alt="Sigiriya Fortress" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Cultural Triangle</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Sigiriya Lion Rock</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">5th Century ancient sky fortress with royal gardens and historic frescoes.</p>
+                    </div>
+                </div>
+
+                <!-- Destination Card 2 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80" alt="Nine Arch Bridge Ella" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Central Highlands</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Ella & Nine Arch Bridge</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">World famous scenic blue train trip through misty tea plantations and waterfalls.</p>
+                    </div>
+                </div>
+
+                <!-- Destination Card 3 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Yala National Park Safari" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Wildlife Safari</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Yala National Park</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">Home to the highest density of wild leopards, elephants, sloth bears & exotic birds.</p>
+                    </div>
+                </div>
+
+                <!-- Destination Card 4 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80" alt="Mirissa Beach Whales" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Southern Coast</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Mirissa & Galle Fort</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">Golden tropical sandy beaches, Blue Whale boat expeditions, and UNESCO Dutch Fort.</p>
+                    </div>
+                </div>
+
+                <!-- Destination Card 5 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80" alt="Kandy Temple Tooth" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Sacred Heritage</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Kandy Sacred City</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">The Temple of the Sacred Tooth Relic, Botanical Gardens & traditional cultural shows.</p>
+                    </div>
+                </div>
+
+                <!-- Destination Card 6 -->
+                <div class="group relative rounded-3xl overflow-hidden h-80 shadow-md hover:shadow-2xl transition-all duration-300">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="Nuwara Eliya Tea Country" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-6 flex flex-col justify-end">
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider mb-1">Little England</span>
+                        <h3 class="text-2xl font-bold text-white font-serif">Nuwara Eliya</h3>
+                        <p class="text-slate-300 text-xs mt-1 opacity-90 line-clamp-2">Colonial style tea estates, Gregory Lake boat rides & authentic Ceylon tea tasting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose KK Tours Section -->
+    <section id="why-us" class="py-20 bg-slate-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-emerald font-bold tracking-widest text-xs uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
+                    The KK Tours Advantage
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold font-serif text-slate-900 mt-3 mb-4">
+                    Why Guests Love Traveling With Us
+                </h2>
+                <p class="text-slate-600 text-base">
+                    From your airport greeting in Colombo to your departure, we ensure a smooth, private, and memorable tour experience across Sri Lanka.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-brand-emerald flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-car-side"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Modern Private A/C Fleet</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Spacious luxury Sedans, SUVs, and Passenger Vans equipped with air conditioning, onboard Wi-Fi, and cool bottled water.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-50 text-brand-gold flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Government Certified Guides</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Friendly, fluent English-speaking native driver-guides with deep knowledge of Sri Lanka's hidden spots, history, and secret photo points.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Zero Hidden Charges</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Transparent pricing covering driver accommodation, expressway tolls, fuel, vehicle insurance, and taxes with no surprise extra fees.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl mb-6 font-bold">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">100% Tailored & Flexible</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Want to stop for fresh coconut, photo breaks, or alter your day schedule? Your driver is completely flexible to your rhythm.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews & Testimonials Section -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-emerald font-bold tracking-widest text-xs uppercase bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
+                    Verified Guest Experiences
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold font-serif text-slate-900 mt-3 mb-4">
+                    What Foreign Guests Say About KK Tours
+                </h2>
+                <div class="flex items-center justify-center gap-1 text-amber-400 text-xl">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-slate-700 text-sm font-bold ml-2">4.95 out of 5 based on TripAdvisor & Google Reviews</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 italic text-sm mb-6 leading-relaxed">
+                        "We booked the 9-day tour with KK Tours and it was the highlight of our year! Our driver was extremely punctual, polite, and knew the best local restaurants. Sigiriya and Ella train ride were unforgettable!"
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Sarah & Mark" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Sarah & Mark Johnson</h4>
+                            <p class="text-xs text-slate-500">United Kingdom • 9 Days Tour</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 italic text-sm mb-6 leading-relaxed">
+                        "As a family of 4 from Australia doing the 14-day ultimate tour, KK Tours treated us like royalty. Clean van, safe driving through mountain curves, and perfect hotel selections. Highly recommended!"
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="David Miller" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">David Miller & Family</h4>
+                            <p class="text-xs text-slate-500">Australia • 14 Days Tour</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 relative">
+                    <div class="flex items-center space-x-1 text-amber-400 mb-4 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-700 italic text-sm mb-6 leading-relaxed">
+                        "The 6-day highlights tour was compact yet perfect for our short vacation! Very responsive on WhatsApp before our flight and picked us right up at Colombo airport smoothly."
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Elena Rostova" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Elena Rostova</h4>
+                            <p class="text-xs text-slate-500">Germany • 6 Days Tour</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ & Travel Advice Section -->
+    <section id="faq" class="py-20 bg-slate-900 text-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-400 font-bold tracking-widest text-xs uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                    Important Travel Information
+                </span>
+                <h2 class="text-3xl md:text-5xl font-extrabold font-serif mt-3 mb-4">
+                    Sri Lanka Tourist FAQ
+                </h2>
+                <p class="text-slate-300 text-base">
+                    Everything you need to know before landing in paradise with KK Tours.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-slate-800/80 rounded-2xl border border-slate-700 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full text-left p-6 font-bold text-base md:text-lg flex justify-between items-center hover:text-brand-gold transition-colors">
+                        <span>1. How do I get an Electronic Travel Authorization (ETA) Tourist Visa?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                    </button>
+                    <div id="faq-content-1" class="hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        Tourists can easily apply online for Sri Lanka's Tourist ETA Visa prior to arrival via the official online visa portal or obtain a Visa on Arrival at Colombo BIA airport. We provide full guidance upon tour confirmation.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-slate-800/80 rounded-2xl border border-slate-700 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full text-left p-6 font-bold text-base md:text-lg flex justify-between items-center hover:text-brand-gold transition-colors">
+                        <span>2. Are all vehicle expenses included in the tour package?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                    </button>
+                    <div id="faq-content-2" class="hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        Yes! All our tour packages include private A/C vehicle, English speaking driver-guide, fuel, highway toll charges, parking fees, driver accommodation, and driver meals. No hidden costs.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-slate-800/80 rounded-2xl border border-slate-700 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full text-left p-6 font-bold text-base md:text-lg flex justify-between items-center hover:text-brand-gold transition-colors">
+                        <span>3. Can we customize the 6, 9, 12, or 14 days itineraries?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                    </button>
+                    <div id="faq-content-3" class="hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        Absolutely! All our itineraries are 100% customizable based on your arrival flight, hotel preferences, budget, and personal interests like surfing, safari, or luxury wellness.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-slate-800/80 rounded-2xl border border-slate-700 overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full text-left p-6 font-bold text-base md:text-lg flex justify-between items-center hover:text-brand-gold transition-colors">
+                        <span>4. What payment methods are accepted?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-brand-gold transition-transform"></i>
+                    </button>
+                    <div id="faq-content-4" class="hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-slate-700/50 pt-4">
+                        We accept bank wire transfers, online credit card payments, or cash upon arrival in USD, EUR, GBP, or LKR.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Inquiry & Booking Form Section -->
+    <section id="contact" class="py-20 bg-slate-100">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+                
+                <!-- Left Details Box -->
+                <div class="lg:col-span-5 bg-brand-emeraldDark p-8 lg:p-12 text-white flex flex-col justify-between">
+                    <div>
+                        <span class="text-amber-400 font-bold text-xs uppercase tracking-wider">Get In Touch</span>
+                        <h3 class="text-3xl font-serif font-extrabold mt-2 mb-6">Start Your Sri Lankan Journey</h3>
+                        <p class="text-emerald-100 text-sm leading-relaxed mb-8">
+                            Have questions or ready to book your private tour? Send us a quick inquiry and our tour manager will reply within 30 minutes!
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-800/60 text-brand-goldLight flex items-center justify-center shrink-0 text-lg font-bold">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Head Office</h4>
+                                    <p class="text-xs text-emerald-200">Negombo, Sri Lanka</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-800/60 text-brand-goldLight flex items-center justify-center shrink-0 text-lg font-bold">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">WhatsApp / Direct Line</h4>
+                                    <p class="text-xs text-emerald-200">+94 75 077 5745 (24/7 Available)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-800/60 text-brand-goldLight flex items-center justify-center shrink-0 text-lg font-bold">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Email Inquiry</h4>
+                                    <p class="text-xs text-emerald-200">info@kktourslanka.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-8 border-t border-emerald-800/80 flex items-center gap-4">
+                        <a href="#" class="w-9 h-9 rounded-full bg-emerald-800/60 flex items-center justify-center hover:bg-brand-gold hover:text-slate-900 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-emerald-800/60 flex items-center justify-center hover:bg-brand-gold hover:text-slate-900 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-emerald-800/60 flex items-center justify-center hover:bg-brand-gold hover:text-slate-900 transition-colors"><i class="fa-brands fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Form Box -->
+                <div class="lg:col-span-7 p-8 lg:p-12">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6 font-serif">Direct Tour Booking Inquiry</h3>
+
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Name *</label>
+                                <input type="text" required placeholder="e.g. John Smith" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Email Address *</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Country / Nationality</label>
+                                <input type="text" placeholder="e.g. Germany" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Selected Package</label>
+                                <select id="contactPackageSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                                    <option value="6 Days Tour">6 Days Sri Lanka Highlights</option>
+                                    <option value="9 Days Tour" selected>9 Days Cultural & Wildlife</option>
+                                    <option value="12 Days Tour">12 Days Grand Island Odyssey</option>
+                                    <option value="14 Days Tour">14 Days Ultimate Paradise</option>
+                                    <option value="Custom Tour">Custom Itinerary Plan</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Expected Arrival Date</label>
+                                <input type="date" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald text-slate-600">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Number of Guests</label>
+                                <input type="number" min="1" value="2" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Special Notes / Flight Info</label>
+                            <textarea rows="3" placeholder="Tell us if you have children, hotel preferences, or special requests..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-emerald hover:bg-emerald-700 text-white font-bold py-4 rounded-xl text-base shadow-lg shadow-emerald-700/20 transition-all hover:scale-[1.01]">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Submit Inquiry Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-emerald to-brand-gold flex items-center justify-center text-white font-black text-lg">
+                            KK
+                        </div>
+                        <span class="text-xl font-extrabold text-white tracking-tight">KK TOURS</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400 mb-4">
+                        Your premier Sri Lanka private driver-guide service offering 6, 9, 12, and 14 days round tours with local passion and hospitality.
+                    </p>
+                    <p class="text-xs text-amber-400 font-semibold">Registered Tourism Operator, Sri Lanka</p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Tour Lengths</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#tours" onclick="switchTourTab(6)" class="hover:text-brand-gold">6 Days Essential Tour</a></li>
+                        <li><a href="#tours" onclick="switchTourTab(9)" class="hover:text-brand-gold">9 Days Cultural & Wildlife</a></li>
+                        <li><a href="#tours" onclick="switchTourTab(12)" class="hover:text-brand-gold">12 Days Grand Island Odyssey</a></li>
+                        <li><a href="#tours" onclick="switchTourTab(14)" class="hover:text-brand-gold">14 Days Paradise Discovery</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Destinations</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#destinations" class="hover:text-brand-gold">Sigiriya Lion Rock</a></li>
+                        <li><a href="#destinations" class="hover:text-brand-gold">Ella & Nine Arch Bridge</a></li>
+                        <li><a href="#destinations" class="hover:text-brand-gold">Yala & Minneriya Safari</a></li>
+                        <li><a href="#destinations" class="hover:text-brand-gold">Mirissa Beach & Whales</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Instant WhatsApp</h4>
+                    <p class="text-xs text-slate-400 mb-3">Chat with founder & lead tour driver directly:</p>
+                    <a href="https://wa.me/94750775745?text=Hi%20KK%20Tours!%20I%20would%20like%20information%20about%20a%20Sri%20Lanka%20private%20tour." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs shadow-md transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Chat on WhatsApp Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800/80 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 KK Tours Sri Lanka. All Rights Reserved. Crafted for Sri Lankan Hospitality.</p>
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-300">Refund Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Quick Button -->
+    <a href="https://wa.me/94750775745?text=Hello%20KK%20Tours,%20I'm%20planning%20a%20trip%20to%20Sri%20Lanka%20and%20would%20like%20details!" target="_blank" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 hover:bg-emerald-400 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform animate-bounce duration-1000" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-100">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-200">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-brand-emerald flex items-center justify-center text-2xl font-bold mb-4">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </div>
+                <h3 class="text-2xl font-serif font-extrabold text-slate-900 mb-2">Book Your Tour</h3>
+                <p class="text-slate-600 text-sm mb-6" id="modalSubtext">Send us your dates and we'll craft your custom itinerary.</p>
+                
+                <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                    <input type="text" required placeholder="Your Name" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                    <input type="email" required placeholder="Your Email Address" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                    <input type="text" placeholder="WhatsApp Number (with country code)" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-emerald">
+                    <button type="submit" class="w-full bg-brand-emerald hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl text-sm shadow-md">
+                        Confirm & Request Quote
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive Tour Packages Data for 6, 9, 12, 14 Days
+        const TOUR_DATA = {
+            6: {
+                title: "6 Days Essential Sri Lanka Highlights",
+                badge: "Ideal for short vacations & fast highlights",
+                price: "$450 - $580",
+                img: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80",
+                route: "Colombo → Sigiriya → Kandy → Nuwara Eliya → Galle → Colombo",
+                highlights: [
+                    "Climb the 5th century Sigiriya Rock Fortress",
+                    "Spiritual Visit to Sacred Kandy Temple of the Tooth",
+                    "Scenic Tea Country drive & Nuwara Eliya colonial walk",
+                    "UNESCO Galle Dutch Fort sunset stroll"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & Negombo Beach Relax", desc: "Airport pickup by KK Tours, check-in to Negombo beach resort." },
+                    { day: "Day 2", title: "Dambulla Caves & Sigiriya Rock", desc: "Explore ancient cave temples & conquer Sigiriya Lion Rock." },
+                    { day: "Day 3", title: "Spice Gardens & Sacred Kandy", desc: "Scenic drive to Kandy, spice tasting & evening cultural show." },
+                    { day: "Day 4", title: "Tea Estates & Nuwara Eliya", desc: "Tea factory tour, waterfalls, and tea tasting in Little England." },
+                    { day: "Day 5", title: "Galle Fort & Southern Coast", desc: "Visit Galle Fort, stilt fishermen, and sunset beach dinner." },
+                    { day: "Day 6", title: "Colombo City & Departure", desc: "Souvenir shopping, Colombo heritage walk & airport dropoff." }
+                ]
+            },
+            9: {
+                title: "9 Days Cultural & Wildlife Expedition",
+                badge: "Our Most Popular Best-Seller Package",
+                price: "$680 - $890",
+                img: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80",
+                route: "Colombo → Sigiriya → Minneriya → Kandy → Scenic Train to Ella → Yala → Mirissa",
+                highlights: [
+                    "Sigiriya Lion Rock + Minneriya Elephant Safari",
+                    "World-famous Scenic Train journey to Ella",
+                    "Yala National Park 4x4 Leopard Safari",
+                    "Mirissa Beach & Coconut Tree Hill"
+                ],
+                itinerary: [
+                    { day: "Day 1", title: "Arrival & Cultural Triangle Transfer", desc: "Meet driver at airport, transfer to Sigiriya eco lodge." },
+                    { day: "Day 2", title: "Sigiriya Rock & Elephant Safari", desc: "Morning climb of Lion Rock and afternoon Minneriya Jeep safari." },
+                    { day: "Day 3", title: "Polonnaruwa Ancient Kingdom", desc: "Cycling through 1,000-year-old royal ruins and giant stupas." },
+                    { day: "Day 4", title: "Spice Trails & Kandy Temple", desc: "Visit Matale spice garden and Temple of the Tooth Relic." },
+                    { day: "Day 5", title: "Blue Train Journey to Ella", desc: "Hop on the famous highland train over mountain bridges." },
+                    { day: "Day 6", title: "Nine Arch Bridge & Little Adam's Peak", desc: "Sunrise photo walk at Nine Arch and hike to Little Adam's Peak." },
+                    { day: "Day 7", title: "Yala National Park Safari", desc: "Drive to Yala, exciting afternoon 4x4 Jeep leopard safari." },
+                    { day: "Day 8", title: "Mirissa Coastal Relaxation", desc: "Golden beach unwind, secret beach sunset, fresh seafood." },
+                    { day: "Day 9", title: "Galle Fort & Airport Transfer", desc: "Explore Dutch Fort before dropoff at Colombo Airport." }
+                ]
+            },
+            12: {
+                title: "12 Days Grand Island Odyssey",
+                badge: "Deep discovery for nature & culture lovers",
+                price: "$920 - $1,250",
+                img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+                route: "Negombo → Sigiriya → Polonnaruwa → Kandy → Nuwara Eliya → Ella → Yala → Tangalle → Mirissa → Colombo",
+                highlights: [
+                    "Complete Cultural Triangle (Sigiriya, Dambulla, Polonnaruwa)",
+                    "Highland Tea Trail & Horton Plains World's End",
+                    "Dual Safari (Minneriya + Yala National Park)",
+                    "Whale Watching Cruise in Mirissa"
+                ],
+                itinerary: [
+                    { day: "Day 1-2", title: "Negombo & Cultural Triangle", desc: "Beach relax, Dambulla Cave Temple & Sigiriya Fortress climb." },
+                    { day: "Day 3-4", title: "Ancient Ruins & Kandy Sacred City", desc: "Polonnaruwa ruins, Kandy Botanical Gardens & tooth temple." },
+                    { day: "Day 5-6", title: "Tea Plantations & Ella Train Ride", desc: "Tea estate tour, scenic mountain train, Nine Arch Bridge photo walk." },
+                    { day: "Day 7-8", title: "Wild Safari & Pristine Tangalle Beach", desc: "Yala leopard safari, peaceful southern coast relaxation." },
+                    { day: "Day 9-10", title: "Mirissa Whale Cruise & Galle Fort", desc: "Blue Whale boat expedition, UNESCO Galle Fort walk." },
+                    { day: "Day 11-12", title: "Bentota Water Sports & Colombo Departure", desc: "Madu River safari, Colombo city tour, transfer to airport." }
+                ]
+            },
+            14: {
+                title: "14 Days Ultimate Island Paradise",
+                badge: "The All-Inclusive Ultimate Sri Lanka Round Tour",
+                price: "$1,150 - $1,580",
+                img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=800&q=80",
+                route: "Negombo → Anuradhapura → Trincomalee → Sigiriya → Kandy → Ella → Yala → Mirissa → Galle → Colombo",
+                highlights: [
+                    "North-East Pristine Beaches (Trincomalee / Pigeon Island)",
+                    "Complete Cultural Triangle & Wilpattu / Yala Safari",
+                    "Scenic Highland Train, Waterfalls & Ella Hikes",
+                    "Southern Coast Beach Resorts, Sea Turtles & Dutch Fort"
+                ],
+                itinerary: [
+                    { day: "Day 1-3", title: "Wilpattu Safari & Anuradhapura", desc: "Airport pick up, ancient sacred city ruins & Wilpattu safari." },
+                    { day: "Day 4-5", title: "Trincomalee Beaches & Pigeon Island", desc: "Snorkeling on Pigeon Island coral reefs & Koneswaram temple." },
+                    { day: "Day 6-7", title: "Sigiriya Lion Rock & Kandy Kingdom", desc: "Sky fortress climb, Spice garden & Kandy Tooth Temple." },
+                    { day: "Day 8-10", title: "Highland Train, Ella & Yala Safari", desc: "Misty train ride, Nine Arch Bridge hike & Yala Leopard safari." },
+                    { day: "Day 11-13", title: "Mirissa Whale Cruise, Galle & Beach", desc: "Whale watching, turtle hatchery, Galle Dutch Fort, luxury beach relax." },
+                    { day: "Day 14", title: "Colombo Shopping & Departure", desc: "Ceylon tea & handicraft shopping, farewell transfer to BIA airport." }
+                ]
+            }
+        };
+
+        let currentTab = 9;
+        let selectedPlannerDays = 9;
+
+        function switchTourTab(days) {
+            currentTab = days;
+
+            // Update Tab Button Classes
+            document.querySelectorAll('.tour-tab-btn').forEach(btn => {
+                btn.className = "tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-brand-emerald hover:bg-slate-50";
+            });
+            const activeBtn = document.getElementById(`tab-btn-${days}`);
+            if(activeBtn) {
+                activeBtn.className = "tour-tab-btn px-5 py-2.5 rounded-xl font-bold text-sm transition-all bg-brand-emerald text-white shadow-md";
+            }
+
+            renderTourDetails(days);
+        }
+
+        function renderTourDetails(days) {
+            const data = TOUR_DATA[days];
+            const container = document.getElementById('tourCardsContainer');
+
+            let itineraryHTML = data.itinerary.map((item, index) => `
+                <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-200/60 hover:bg-emerald-50/50 transition-colors">
+                    <div class="bg-brand-emerald text-white text-xs font-bold px-2.5 py-1 rounded-lg shrink-0">
+                        ${item.day}
+                    </div>
+                    <div>
+                        <h5 class="text-sm font-bold text-slate-900">${item.title}</h5>
+                        <p class="text-xs text-slate-600 mt-0.5">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            let highlightsHTML = data.highlights.map(h => `
+                <li class="flex items-center space-x-2 text-xs font-medium text-slate-700">
+                    <i class="fa-solid fa-circle-check text-brand-emerald text-sm"></i>
+                    <span>${h}</span>
+                </li>
+            `).join('');
+
+            container.innerHTML = `
+                <!-- Left Overview Card -->
+                <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6">
+                    <div class="relative h-56 rounded-2xl overflow-hidden shadow-inner">
+                        <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-amber-300 text-xs font-bold px-3 py-1 rounded-full border border-amber-500/30">
+                            ${data.badge}
+                        </span>
+                    </div>
+
+                    <div>
+                        <span class="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">Package Name</span>
+                        <h3 class="text-2xl font-extrabold font-serif text-slate-900">${data.title}</h3>
+                        <p class="text-xs text-brand-emerald font-semibold mt-1 flex items-center gap-1">
+                            <i class="fa-solid fa-route"></i> ${data.route}
+                        </p>
+                    </div>
+
+                    <div class="border-t border-b border-slate-100 py-4">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Key Highlights Included</h4>
+                        <ul class="space-y-2.5">
+                            ${highlightsHTML}
+                        </ul>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase font-bold block">Estimated Price</span>
+                            <span class="text-2xl font-serif font-black text-brand-gold">${data.price} <span class="text-xs font-sans text-slate-500 font-normal">/ person</span></span>
+                        </div>
+                        <button onclick="openBookingModal('${data.title}')" class="bg-brand-emerald hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition-all">
+                            Book This Package
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Detailed Day-by-Day Itinerary -->
+                <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                        <div>
+                            <h4 class="text-xl font-bold font-serif text-slate-900">Day-By-Day Detailed Route</h4>
+                            <p class="text-xs text-slate-500">100% Flexible - Stops, meal locations & activities can be adjusted with your driver.</p>
+                        </div>
+                        <span class="bg-emerald-100 text-brand-emerald font-extrabold text-xs px-3 py-1.5 rounded-full">
+                            ${days} Days / ${days - 1} Nights
+                        </span>
+                    </div>
+
+                    <div class="space-y-3 max-h-[500px] overflow-y-auto pr-2 no-scrollbar">
+                        ${itineraryHTML}
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-shield text-brand-emerald"></i> Includes private AC vehicle, fuel & English driver guide</span>
+                        <a href="https://wa.me/94750775745?text=Hi%20KK%20Tours!%20I'm%20interested%20in%20the%20${encodeURIComponent(data.title)}" target="_blank" class="font-bold text-emerald-700 hover:underline flex items-center gap-1">
+                            Ask Question on WhatsApp <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setPlannerDays(days) {
+            selectedPlannerDays = days;
+            document.querySelectorAll('.planner-day-btn').forEach(btn => {
+                btn.className = "planner-day-btn p-3 rounded-xl border border-slate-600 bg-slate-700/50 text-white font-bold text-sm text-center hover:border-brand-emerald";
+            });
+            const activeBtn = document.getElementById(`p-day-${days}`);
+            if(activeBtn) {
+                activeBtn.className = "planner-day-btn p-3 rounded-xl border border-brand-emerald bg-brand-emerald text-white font-bold text-sm text-center shadow-lg";
+            }
+            calculateTourEstimate();
+        }
+
+        function calculateTourEstimate() {
+            const travelers = parseInt(document.getElementById('plannerTravelers').value) || 2;
+            const hotel = document.getElementById('plannerHotel').value;
+
+            // Base rate per day per person estimate
+            let baseRate = 75; // USD base
+            if (hotel === '3_star') baseRate = 95;
+            if (hotel === '4_star') baseRate = 130;
+            if (hotel === '5_star') baseRate = 210;
+
+            // Small group discount factor
+            let multiplier = 1.0;
+            if (travelers >= 2) multiplier = 0.85;
+            if (travelers >= 4) multiplier = 0.70;
+            if (travelers >= 8) multiplier = 0.60;
+
+            let minPrice = Math.round(selectedPlannerDays * baseRate * multiplier * 0.9);
+            let maxPrice = Math.round(selectedPlannerDays * baseRate * multiplier * 1.15);
+
+            document.getElementById('plannerPriceDisplay').innerText = `$${minPrice} - $${maxPrice} USD`;
+        }
+
+        function sendWhatsAppPlanner() {
+            const travelers = document.getElementById('plannerTravelers').selectedOptions[0].text;
+            const hotel = document.getElementById('plannerHotel').selectedOptions[0].text;
+            const price = document.getElementById('plannerPriceDisplay').innerText;
+
+            let checkedInterests = [];
+            document.querySelectorAll('.planner-interest:checked').forEach(cb => {
+                checkedInterests.push(cb.value);
+            });
+
+            let msg = `Hello KK Tours! I built a tour plan on your website:%0A` +
+                      `- *Duration:* ${selectedPlannerDays} Days%0A` +
+                      `- *Travelers:* ${travelers}%0A` +
+                      `- *Accommodation:* ${hotel}%0A` +
+                      `- *Interests:* ${checkedInterests.join(', ')}%0A` +
+                      `- *Estimated Quote:* ${price}%0A%0A` +
+                      `Could you please send me a detailed custom itinerary and final price?`;
+
+            window.open(`https://wa.me/94750775745?text=${msg}`, '_blank');
+        }
+
+        function openBookingModal(pkgName) {
+            document.getElementById('modalSubtext').innerText = `Request custom quote for: ${pkgName}`;
+            const selectInContact = document.getElementById('contactPackageSelect');
+            if(selectInContact) {
+                selectInContact.value = pkgName.includes('6') ? '6 Days Tour' : 
+                                       pkgName.includes('9') ? '9 Days Tour' : 
+                                       pkgName.includes('12') ? '12 Days Tour' : 
+                                       pkgName.includes('14') ? '14 Days Tour' : 'Custom Tour';
+            }
+            const modal = document.getElementById('bookingModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            document.getElementById('modalContent').innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-brand-emerald flex items-center justify-center text-3xl mx-auto mb-4">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-serif text-slate-900 mb-2">Inquiry Received!</h3>
+                    <p class="text-slate-600 text-sm mb-6">Ayubowan! Thank you for contacting KK Tours. Our founder will reply to your inquiry via email/WhatsApp within 30 minutes.</p>
+                    <button onclick="closeBookingModal()" class="bg-brand-emerald text-white px-6 py-2.5 rounded-xl font-bold text-sm">
+                        Close
+                    </button>
+                </div>
+            `;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            confetti({
+                particleCount: 120,
+                spread: 80,
+                origin: { y: 0.7 }
+            });
+            alert('Thank you! Your tour inquiry has been submitted successfully. KK Tours will contact you shortly!');
+            e.target.reset();
+        }
+
+        function toggleFaq(num) {
+            const content = document.getElementById(`faq-content-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Hero Background Carousel
+        const HERO_IMAGES = [
+            "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80",
+            "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80",
+            "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1920&q=80",
+            "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1920&q=80"
+        ];
+        let heroImgIdx = 0;
+
+        setInterval(() => {
+            heroImgIdx = (heroImgIdx + 1) % HERO_IMAGES.length;
+            const heroImg = document.getElementById('heroBg');
+            if(heroImg) {
+                heroImg.style.opacity = '0.3';
+                setTimeout(() => {
+                    heroImg.src = HERO_IMAGES[heroImgIdx];
+                    heroImg.style.opacity = '1';
+                }, 400);
+            }
+        }, 6000);
+
+        // Mobile Menu Drawer Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize App on DOM Loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTourTab(9);
+            calculateTourEstimate();
+
+            // GSAP Scroll Animations
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('#navbar', {
+                y: -100,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>
